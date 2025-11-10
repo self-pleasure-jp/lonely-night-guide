@@ -289,6 +289,30 @@
             </div>
         </div>
 
+        <!-- 恋愛ドラマランキング -->
+        <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 今週の恋愛ドラマ TOP 5</h2>
+            <div id="romance-ranking" style="text-align: center; color: #666;">
+                <p>読み込み中...</p>
+            </div>
+        </div>
+
+        <!-- 癒し系アニメランキング -->
+        <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">🌸 今週の癒し系アニメ TOP 5</h2>
+            <div id="healing-ranking" style="text-align: center; color: #666;">
+                <p>読み込み中...</p>
+            </div>
+        </div>
+
+        <!-- 恋愛漫画ランキング -->
+        <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">📖 今週の恋愛漫画 TOP 5</h2>
+            <div id="manga-ranking" style="text-align: center; color: #666;">
+                <p>読み込み中...</p>
+            </div>
+        </div>
+
         <div class="adult-section">
             <h3>もっと満たされたい方へ</h3>
             <p style="color: #666; margin-bottom: 15px;">
@@ -310,5 +334,86 @@
             </p>
         </footer>
     </div>
+
+    <script>
+        const API_ID = 'a2BXCsL2MVUtUeuFBZ1h';
+        const AFFILIATE_ID = 'yoru365-990';
+
+        // 作品情報を取得して表示
+        async function loadRankings() {
+            // 恋愛ドラマ
+            await loadCategory('romance-ranking', 555, '恋愛');
+            
+            // 癒し系アニメ
+            await loadCategory('healing-ranking', 46, 'アニメ');
+            
+            // 恋愛漫画は電子書籍なので別処理
+            document.getElementById('manga-ranking').innerHTML = 
+                '<p style="margin-bottom: 20px;">恋愛漫画の最新作はこちらからチェック！</p>' +
+                '<a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=' + AFFILIATE_ID + '&ch=link_tool&ch_id=link" ' +
+                'target="_blank" rel="noopener noreferrer" ' +
+                'style="display: inline-block; background: #d4758f; color: white; padding: 15px 40px; border-radius: 25px; text-decoration: none; transition: all 0.3s;">' +
+                '電子書籍ストアへ</a>';
+        }
+
+        async function loadCategory(containerId, genreId, categoryName) {
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            const apiUrl = `https://api.dmm.com/affiliate/v3/ItemList?api_id=${API_ID}&affiliate_id=${AFFILIATE_ID}&site=DMM.com&service=digital&floor=videoa&article=keyword&article_id=${genreId}&hits=5&sort=rank&output=json`;
+            
+            try {
+                const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), { timeout: 15000 });
+                const data = await response.json();
+                
+                if (data.result && data.result.items && data.result.items.length > 0) {
+                    const items = data.result.items.filter(item => 
+                        item.imageURL && item.imageURL.large && 
+                        !item.imageURL.large.includes('noimage')
+                    );
+                    
+                    if (items.length > 0) {
+                        displayProducts(containerId, items.slice(0, 5));
+                    } else {
+                        showError(containerId, categoryName);
+                    }
+                } else {
+                    showError(containerId, categoryName);
+                }
+            } catch (error) {
+                console.error(`Error loading ${categoryName}:`, error);
+                showError(containerId, categoryName);
+            }
+        }
+
+        function displayProducts(containerId, products) {
+            const html = products.map(product => `
+                <div style="display: inline-block; width: 180px; margin: 10px; text-align: left; vertical-align: top;">
+                    <a href="${product.affiliateURL}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #333;">
+                        <img src="${product.imageURL.large}" 
+                             alt="${product.title}" 
+                             style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s;"
+                             onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';"
+                             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';">
+                        <p style="margin-top: 10px; font-size: 0.9em; line-height: 1.4; height: 3.6em; overflow: hidden;">
+                            ${product.title.substring(0, 40)}${product.title.length > 40 ? '...' : ''}
+                        </p>
+                    </a>
+                </div>
+            `).join('');
+            
+            document.getElementById(containerId).innerHTML = html;
+        }
+
+        function showError(containerId, categoryName) {
+            document.getElementById(containerId).innerHTML = 
+                `<p style="margin-bottom: 20px;">${categoryName}の最新作はこちらからチェック！</p>` +
+                '<a href="https://al.dmm.com/?lurl=https%3A%2F%2Fwww.dmm.com%2Fdigital%2Fvideoa%2F-%2Flist%2F%3D%2Fsort%3Ddate%2F&af_id=' + AFFILIATE_ID + '&ch=link_tool&ch_id=link" ' +
+                'target="_blank" rel="noopener noreferrer" ' +
+                'style="display: inline-block; background: #d4758f; color: white; padding: 15px 40px; border-radius: 25px; text-decoration: none; transition: all 0.3s;">' +
+                '作品を探す</a>';
+        }
+
+        // ページ読み込み時に実行
+        window.addEventListener('DOMContentLoaded', loadRankings);
+    </script>
 </body>
-</html>
+</html>と
