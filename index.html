@@ -289,25 +289,25 @@
             </div>
         </div>
 
-        <!-- 恋愛ドラマランキング -->
+        <!-- 恋愛漫画ランキング -->
         <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 今週の恋愛ドラマ TOP 5</h2>
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 今週の恋愛漫画 TOP 5</h2>
             <div id="romance-ranking" style="text-align: center; color: #666;">
                 <p>読み込み中...</p>
             </div>
         </div>
 
-        <!-- 癒し系アニメランキング -->
+        <!-- 人気小説ランキング -->
         <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">🌸 今週の癒し系アニメ TOP 5</h2>
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">📖 今週の人気小説 TOP 5</h2>
             <div id="healing-ranking" style="text-align: center; color: #666;">
                 <p>読み込み中...</p>
             </div>
         </div>
 
-        <!-- 恋愛漫画ランキング -->
+        <!-- おすすめ電子書籍 -->
         <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">📖 今週の恋愛漫画 TOP 5</h2>
+            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">✨ 今週のおすすめ TOP 5</h2>
             <div id="manga-ranking" style="text-align: center; color: #666;">
                 <p>読み込み中...</p>
             </div>
@@ -341,24 +341,16 @@
 
         // 作品情報を取得して表示
         async function loadRankings() {
-            // 恋愛ドラマ
-            await loadCategory('romance-ranking', 555, '恋愛');
-            
-            // 癒し系アニメ
-            await loadCategory('healing-ranking', 46, 'アニメ');
-            
-            // 恋愛漫画は電子書籍なので別処理
-            document.getElementById('manga-ranking').innerHTML = 
-                '<p style="margin-bottom: 20px;">恋愛漫画の最新作はこちらからチェック！</p>' +
-                '<a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=' + AFFILIATE_ID + '&ch=link_tool&ch_id=link" ' +
-                'target="_blank" rel="noopener noreferrer" ' +
-                'style="display: inline-block; background: #d4758f; color: white; padding: 15px 40px; border-radius: 25px; text-decoration: none; transition: all 0.3s;">' +
-                '電子書籍ストアへ</a>';
+            // 3つとも同じ電子書籍ランキングから取得（オフセットで別作品を表示）
+            await loadCategory('romance-ranking', null, '恋愛漫画');
+            await loadCategory('healing-ranking', null, '人気小説');
+            await loadCategory('manga-ranking', null, 'おすすめ電子書籍');
         }
 
         async function loadCategory(containerId, genreId, categoryName) {
             const proxyUrl = 'https://api.allorigins.win/raw?url=';
-            const apiUrl = `https://api.dmm.com/affiliate/v3/ItemList?api_id=${API_ID}&affiliate_id=${AFFILIATE_ID}&site=DMM.com&service=digital&floor=videoa&article=keyword&article_id=${genreId}&hits=5&sort=rank&output=json`;
+            // DMMブックス（電子書籍）から取得
+            const apiUrl = `https://api.dmm.com/affiliate/v3/ItemList?api_id=${API_ID}&affiliate_id=${AFFILIATE_ID}&site=DMM.com&service=book&floor=book&hits=20&sort=rank&output=json`;
             
             try {
                 const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), { timeout: 15000 });
@@ -367,7 +359,8 @@
                 if (data.result && data.result.items && data.result.items.length > 0) {
                     const items = data.result.items.filter(item => 
                         item.imageURL && item.imageURL.large && 
-                        !item.imageURL.large.includes('noimage')
+                        !item.imageURL.large.includes('noimage') &&
+                        !item.imageURL.large.includes('nowprinting')
                     );
                     
                     if (items.length > 0) {
