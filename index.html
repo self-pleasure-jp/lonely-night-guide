@@ -14,9 +14,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background: #faf8f5;
-            color: #333;
+            background: linear-gradient(180deg, #0a0e27 0%, #1a1438 50%, #2d1b3d 100%);
+            color: #e0e0e0;
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         .container {
@@ -26,23 +27,30 @@
         }
 
         header {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: transparent;
+            padding: 40px 20px;
+            border-radius: 0;
+            box-shadow: none;
             margin-bottom: 30px;
             text-align: center;
+            border: none;
         }
 
         h1 {
-            color: #d4758f;
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            background: linear-gradient(135deg, #e8e8f0 0%, #b8a9d4 50%, #9fa8da 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 0 0 40px rgba(232, 232, 240, 0.4);
+            letter-spacing: 3px;
         }
 
         .subtitle {
-            color: #666;
-            font-size: 1.2em;
+            color: #b8a9d4;
+            font-size: 1.3em;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .nav {
@@ -54,55 +62,57 @@
         }
 
         .nav-btn {
-            background: white;
-            color: #d4758f;
+            background: rgba(184, 169, 212, 0.15);
+            color: #e8e8f0;
             padding: 12px 30px;
-            border-radius: 25px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border: 2px solid #f0e6e9;
+            box-shadow: none;
+            border: none;
         }
 
         .nav-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            background: #fef5f7;
+            background: rgba(184, 169, 212, 0.3);
+            box-shadow: 0 8px 20px rgba(184, 169, 212, 0.4);
         }
 
         .hero {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            background: transparent;
+            padding: 60px 40px;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 50px;
             text-align: center;
+            border: none;
         }
 
         .hero h2 {
-            color: #d4758f;
-            font-size: 2em;
-            margin-bottom: 20px;
+            color: #e8e8f0;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);
         }
 
         .dmm-tv-btn {
             display: inline-block;
-            background: #d4758f;
+            background: linear-gradient(135deg, #b8a9d4 0%, #9fa8da 100%);
             color: white;
             padding: 20px 50px;
-            border-radius: 50px;
+            border-radius: 20px;
             text-decoration: none;
             font-size: 1.3em;
             font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(212, 117, 143, 0.3);
+            box-shadow: 0 10px 30px rgba(184, 169, 212, 0.5);
+            border: none;
         }
 
         .dmm-tv-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(212, 117, 143, 0.4);
-            background: #c26680;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(184, 169, 212, 0.7);
         }
 
         .categories {
@@ -113,17 +123,19 @@
         }
 
         .category-card {
-            background: white;
+            background: rgba(26, 20, 56, 0.5);
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: none;
             text-align: center;
             transition: all 0.3s;
+            border: none;
         }
 
         .category-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background: rgba(45, 27, 61, 0.7);
+            box-shadow: 0 15px 40px rgba(184, 169, 212, 0.3);
         }
 
         .category-icon {
@@ -133,65 +145,73 @@
         }
 
         .category-card h3 {
-            color: #d4758f;
+            color: #e8e8f0;
             font-size: 1.5em;
             margin-bottom: 10px;
         }
 
         .category-card p {
-            color: #666;
+            color: #b8a9d4;
             margin-bottom: 20px;
         }
 
         .category-link {
             display: inline-block;
-            background: #d4758f;
+            background: linear-gradient(135deg, #b8a9d4 0%, #9fa8da 100%);
             color: white;
             padding: 10px 25px;
-            border-radius: 25px;
+            border-radius: 20px;
             text-decoration: none;
             transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(184, 169, 212, 0.4);
+            border: none;
         }
 
         .category-link:hover {
-            background: #c26680;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(184, 169, 212, 0.6);
         }
 
         .adult-section {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
+            background: rgba(45, 27, 61, 0.3);
+            padding: 40px;
+            border-radius: 20px;
             text-align: center;
-            margin: 30px 0;
-            border: 2px solid #ddd;
+            margin: 50px 0;
+            border: none;
         }
 
         .adult-section h3 {
-            color: #666;
+            color: #e8e8f0;
             margin-bottom: 15px;
+            font-size: 1.5em;
         }
 
         .adult-link {
             display: inline-block;
-            background: #6c757d;
-            color: white;
+            background: rgba(184, 169, 212, 0.3);
+            color: #e8e8f0;
             padding: 15px 40px;
-            border-radius: 25px;
+            border-radius: 20px;
             text-decoration: none;
             transition: all 0.3s;
+            border: none;
         }
 
         .adult-link:hover {
-            background: #5a6268;
+            background: rgba(184, 169, 212, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(184, 169, 212, 0.5);
         }
 
         footer {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
+            background: transparent;
+            padding: 40px 30px;
+            border-radius: 0;
             text-align: center;
-            margin-top: 30px;
-            color: #666;
+            margin-top: 50px;
+            color: #8070a0;
+            border: none;
         }
 
         @media (max-width: 768px) {
@@ -224,8 +244,9 @@
         </div>
 
         <div class="hero">
+            <img src="images/2-1.png" alt="孤独な夜のガイド" style="width: 100%; max-width: 1200px; height: 400px; object-fit: cover; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <h2>満たされない夜に</h2>
-            <p style="font-size: 1.2em; color: #666; margin-bottom: 20px;">
+            <p style="font-size: 1.2em; color: #c0b0d0; margin-bottom: 20px;">
                 パートナーがいても、いなくても<br>
                 心が満たされない夜は誰にでもある<br>
                 <br>
@@ -240,83 +261,87 @@
         </div>
 
         <!-- カテゴリリンク一覧（テキスト） -->
-        <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">📚 ジャンルから探す</h2>
+        <div style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 30px 0; box-shadow: none;">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">ジャンルから探す</h2>
             
             <!-- 恋愛・大人向け漫画 -->
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: #d4758f; font-size: 1.3em; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0e6e9;">💕 恋愛・大人向け漫画</h3>
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #e8e8f0; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(184, 169, 212, 0.3);">恋愛・大人向け漫画</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">恋愛 (12,169)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">ラブコメ (1,571)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">ロマンス (600)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">お色気 (367)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">セクシー (193)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">不倫・婚外恋愛 (144)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">オフィスラブ (42)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">ガールズラブ (42)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">ロマンスコミック</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fef5f7; border-radius: 20px; transition: all 0.3s;">大人向け漫画</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">恋愛 (12,169)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ラブコメ (1,571)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンス (600)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">お色気 (367)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">セクシー (193)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">不倫・婚外恋愛 (144)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">オフィスラブ (42)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ガールズラブ (42)</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンスコミック</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">大人向け漫画</a>
                 </div>
             </div>
 
             <!-- BL・TL -->
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: #d4758f; font-size: 1.3em; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0e6e9;">💙 BL・TL</h3>
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #87ceeb; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(135, 206, 235, 0.3);">BL・TL</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #e6f2ff; border-radius: 20px; transition: all 0.3s;">BL（ボーイズラブ）</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #ffe6f2; border-radius: 20px; transition: all 0.3s;">TL（ティーンズラブ）</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(135, 206, 235, 0.15); border-radius: 20px; transition: all 0.3s;">BL（ボーイズラブ）</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">TL（ティーンズラブ）</a>
                 </div>
             </div>
 
             <!-- 小説 -->
-            <div style="margin-bottom: 30px;">
-                <h3 style="color: #d4758f; font-size: 1.3em; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0e6e9;">📖 恋愛・官能小説</h3>
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #ffb347; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 179, 71, 0.3);">恋愛・官能小説</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fff5e6; border-radius: 20px; transition: all 0.3s;">ロマンス小説</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fff5e6; border-radius: 20px; transition: all 0.3s;">官能小説</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #fff5e6; border-radius: 20px; transition: all 0.3s;">文芸・ラノベ</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンス小説</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">官能小説</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">文芸・ラノベ</a>
                 </div>
             </div>
 
             <!-- 基本無料ゲーム -->
             <div>
-                <h3 style="color: #d4758f; font-size: 1.3em; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #f0e6e9;">🎮 基本無料ゲーム</h3>
+                <h3 style="color: #98fb98; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(152, 251, 152, 0.3);">基本無料ゲーム</h3>
                 <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #e6fff2; border-radius: 20px; transition: all 0.3s;">PCゲーム一覧</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #666; text-decoration: none; padding: 8px 15px; background: #e6fff2; border-radius: 20px; transition: all 0.3s;">基本無料で遊ぶ</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(152, 251, 152, 0.15); border-radius: 20px; transition: all 0.3s;">PCゲーム一覧</a>
+                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(152, 251, 152, 0.15); border-radius: 20px; transition: all 0.3s;">基本無料で遊ぶ</a>
                 </div>
             </div>
         </div>
 
         <!-- 少女・女性マンガ -->
-        <div id="romance-section" style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 少女・女性マンガ 人気TOP5</h2>
-            <div id="romance-ranking" style="text-align: center; color: #666;">
+        <div id="romance-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
+            <img src="image/2-2.png" alt="恋愛漫画" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">少女・女性マンガ 人気TOP5</h2>
+            <div id="romance-ranking" style="text-align: center; color: #c0b0d0;">
                 <p>読み込み中...</p>
             </div>
         </div>
 
         <!-- TL（ティーンズラブ） -->
-        <div id="tl-section" style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 TL（ティーンズラブ） 人気TOP5</h2>
-            <div id="tl-ranking" style="text-align: center; color: #666;">
+        <div id="tl-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
+            <img src="image/2-3.png" alt="TL" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">TL（ティーンズラブ） 人気TOP5</h2>
+            <div id="tl-ranking" style="text-align: center; color: #c0b0d0;">
                 <p>読み込み中...</p>
             </div>
         </div>
 
         <!-- BL（ボーイズラブ） -->
-        <div id="bl-section" style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">💕 BL（ボーイズラブ） 人気TOP5</h2>
-            <div id="bl-ranking" style="text-align: center; color: #666;">
+        <div id="bl-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
+            <img src="image/2-4.png" alt="BL" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">BL（ボーイズラブ） 人気TOP5</h2>
+            <div id="bl-ranking" style="text-align: center; color: #c0b0d0;">
                 <p>読み込み中...</p>
             </div>
         </div>
 
         <!-- 文芸・ラノベ -->
-        <div id="novel-section" style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 30px;">📖 文芸・ラノベ 人気TOP5</h2>
-            <div id="novel-ranking" style="text-align: center; color: #666;">
+        <div id="novel-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
+            <img src="image/2-5.png" alt="文芸・ラノベ" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">文芸・ラノベ 人気TOP5</h2>
+            <div id="novel-ranking" style="text-align: center; color: #c0b0d0;">
                 <p>読み込み中...</p>
             </div>
         </div>
@@ -331,55 +356,55 @@
             <a href="https://al.dmm.com/?lurl=https%3A%2F%2Ftv.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                target="_blank" 
                rel="noopener noreferrer"
-               style="display: inline-block; background: white; color: #667eea; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-size: 1.3em; font-weight: bold; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+               style="display: inline-block; background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%); color: #1a1438; padding: 20px 50px; border-radius: 20px; text-decoration: none; font-size: 1.3em; font-weight: bold; transition: all 0.3s; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);">
                 30日間無料体験
             </a>
         </div>
 
         <!-- 全ジャンル一覧 -->
-        <div style="background: white; padding: 40px; border-radius: 15px; margin: 30px 0;">
-            <h2 style="color: #d4758f; text-align: center; margin-bottom: 40px;">📚 すべてのジャンルから探す</h2>
+        <div style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
+            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">すべてのジャンルから探す</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 800px; margin: 0 auto;">
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">📘</div>
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
+                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
                     <div style="font-weight: bold;">少年・青年マンガ</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
                     <div style="font-size: 1.2em; margin-bottom: 5px;">💕</div>
                     <div style="font-weight: bold;">少女・女性マンガ</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
                     <div style="font-size: 1.2em; margin-bottom: 5px;">💙</div>
                     <div style="font-weight: bold;">BL</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
                     <div style="font-size: 1.2em; margin-bottom: 5px;">💖</div>
                     <div style="font-weight: bold;">TL</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
                     <div style="font-size: 1.2em; margin-bottom: 5px;">📖</div>
                     <div style="font-weight: bold;">文芸・ラノベ</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">💼</div>
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
+                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
                     <div style="font-weight: bold;">ビジネス・実用</div>
                 </a>
                 <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                    target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: #f8f9fa; border-radius: 10px; text-decoration: none; color: #333; text-align: center; transition: all 0.3s; border: 2px solid #e9ecef;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">📸</div>
+                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
+                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
                     <div style="font-weight: bold;">写真集</div>
                 </a>
             </div>
@@ -474,7 +499,7 @@
                 `<p style="margin-bottom: 20px;">${categoryName}の最新作はこちらからチェック！</p>` +
                 '<a href="https://al.dmm.com/?lurl=https%3A%2F%2Fwww.dmm.com%2Fdigital%2Fvideoa%2F-%2Flist%2F%3D%2Fsort%3Ddate%2F&af_id=' + AFFILIATE_ID + '&ch=link_tool&ch_id=link" ' +
                 'target="_blank" rel="noopener noreferrer" ' +
-                'style="display: inline-block; background: #d4758f; color: white; padding: 15px 40px; border-radius: 25px; text-decoration: none; transition: all 0.3s;">' +
+                'style="display: inline-block; background: #b8a9d4; color: white; padding: 15px 40px; border-radius: 20px; text-decoration: none; transition: all 0.3s;">' +
                 '作品を探す</a>';
         }
 
