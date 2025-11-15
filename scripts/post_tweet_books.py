@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-DMMブックス 自動ツイート投稿スクリプト
-- JSONから順番に投稿
-- 画像付き（ぼかしなし）
-- センシティブ設定
+DMMブックス 自動ツイート投稿スクリプト（成人向けぼかし版）
+- 一般向け: 画像そのまま
+- 成人向け: 画像ぼかし＋テキスト伏字
 """
 
 import os
@@ -13,7 +12,7 @@ import tweepy
 from datetime import datetime
 import requests
 from io import BytesIO
-from PIL import Image
+from PIL import Image, ImageFilter
 
 # 環境変数から認証情報を取得
 TWITTER_API_KEY = os.environ.get('TWITTER_API_KEY')
@@ -23,6 +22,9 @@ TWITTER_ACCESS_TOKEN_SECRET = os.environ.get('TWITTER_ACCESS_TOKEN_SECRET')
 
 COUNTER_FILE = 'data/counter.txt'
 DATA_FILE = 'data/books_data.json'
+
+# 成人向けカテゴリID
+ADULT_CATEGORIES = ['adult_manga', 'adult_novel', 'adult_photo', 'adult_bl', 'adult_tl']
 
 def load_books_data():
     """JSONデータを読み込み"""
@@ -70,7 +72,8 @@ def build_all_items_list(data):
                 'type': 'general',
                 'category_id': category_id,
                 'category_name': category_data['name'],
-                'item': item
+                'item': item,
+                'is_adult': False
             })
     
     # 成人向けカテゴリ
@@ -80,7 +83,8 @@ def build_all_items_list(data):
                 'type': 'adult',
                 'category_id': category_id,
                 'category_name': category_data['name'],
-                'item': item
+                'item': item,
+                'is_adult': True
             })
     
     print(f"📋 Total items: {len(all_items)}")
@@ -97,18 +101,36 @@ def select_item_by_counter(all_items, counter):
     print(f"🎯 Selected item {index + 1}/{len(all_items)}: {selected['category_name']}")
     return selected
 
-def download_image(image_url):
-    """画像をダウンロード（ぼかしなし）"""
+def censor_text(text, is_adult=False):
+    """テキストを検閲"""
+    # 成人向けの追加伏字
+    if is_adult:
+        adult_words = {
+            'アダルト': 'ア〇ルト',
+            'エロ': 'エ〇',
+            '成人': '成〇',
+            '官能': '官〇'
+        }
+        for word, replacement in adult_words.items():
+            text = text.replace(word, replacement)
+    
+    return text
+
+def download_image(image_url, should_blur=False):
+    """画像をダウンロード（必要に応じてぼかし）"""
     try:
         print(f"🖼️  Downloading image from: {image_url}")
         response = requests.get(image_url, timeout=10)
         response.raise_for_status()
         
-        # 画像を開く
         image = Image.open(BytesIO(response.content))
         print(f"✅ Image downloaded: {image.size}")
         
-        # メモリ上のバイトストリームに保存
+        # 成人向けの場合はぼかし適用
+        if should_blur:
+            image = image.filter(ImageFilter.GaussianBlur(radius=5))
+            print(f"✅ Applied blur (radius=5)")
+        
         output = BytesIO()
         image.save(output, format='JPEG', quality=85)
         output.seek(0)
@@ -123,16 +145,19 @@ def create_tweet_text(selected):
     """投稿テキストを生成"""
     item = selected['item']
     category_name = selected['category_name']
-    item_type = selected['type']
+    is_adult = selected['is_adult']
     
-    title = item.get('title', 'タイトル不明')
+    # タイトルを検閲
+    title = censor_text(item.get('title', 'タイトル不明'), is_adult=is_adult)
     url = item.get('affiliateURL', item.get('URL', ''))
     
     # タイトルを70文字に制限
     if len(title) > 70:
         title = title[:67] + '...'
     
-    # シンプルな投稿
+    # カテゴリ名も検閲
+    category_name = censor_text(category_name, is_adult=is_adult)
+    
     tweet = f"{category_name}\n\n{title}\n\n{url}"
     
     return tweet
@@ -228,13 +253,14 @@ def main():
     # ツイート作成
     tweet_text = create_tweet_text(selected)
     
-    # 画像取得
+    # 画像取得（成人向けの場合はぼかし）
     item = selected['item']
     image_url = item.get('imageURL', {}).get('large') or item.get('imageURL', {}).get('small')
     
     image_data = None
     if image_url:
-        image_data = download_image(image_url)
+        is_adult = selected['is_adult']
+        image_data = download_image(image_url, should_blur=is_adult)
     else:
         print("⚠️ No image URL found")
     
@@ -243,7 +269,8 @@ def main():
     print("="*50)
     print(tweet_text)
     if image_data:
-        print("\n🖼️  Image: Book cover attached")
+        blur_status = "Blurred" if selected['is_adult'] else "Clear"
+        print(f"\n🖼️  Image: {blur_status} image attached")
     print("="*50 + "\n")
     
     # 投稿
