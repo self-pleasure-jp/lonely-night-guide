@@ -72,19 +72,20 @@ def main():
         'adult_categories': {}      # 成人向け
     }
     
-    # 一般向けカテゴリ
+    # 一般向けカテゴリ（FANZAのブックスから取得）
     print("\n📚 === 一般向けカテゴリ ===")
     general_categories = {
         'girls_comics': {'floor': 'comic', 'name': '少女・女性マンガ'},
-        'tl': {'floor': 'comic', 'name': 'TL（ティーンズラブ）'},
-        'bl': {'floor': 'comic', 'name': 'BL（ボーイズラブ）'},
+        'tl': {'floor': 'tl', 'name': 'TL（ティーンズラブ）'},
+        'bl': {'floor': 'bl', 'name': 'BL（ボーイズラブ）'},
         'novels': {'floor': 'novel', 'name': '文芸・ラノベ'}
     }
     
     for category_id, config in general_categories.items():
         print(f"\n📖 {config['name']}")
         items = fetch_books_ranking(
-            site='DMM.com',
+            site='FANZA',
+            service='book',
             floor=config['floor'],
             hits=10
         )
