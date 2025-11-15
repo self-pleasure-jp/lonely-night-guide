@@ -138,13 +138,13 @@ def create_tweet_text(selected):
     return tweet
 
 def create_fallback_tweet():
-    """フォールバックツイート"""
-    return """DMMブックスで心満たされる一冊を
+    """フォールバックツイート（indexに誘導）"""
+    return """孤独な夜のガイド
 
 恋愛マンガ、BL、TL、ラノベなど
 今夜を優しく満たす作品が見つかります
 
-https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link"""
+https://self-pleasure-jp.github.io/lonely-night-guide/"""
 
 def post_tweet_with_image(tweet_text, image_data):
     """画像付きツイートを投稿"""
