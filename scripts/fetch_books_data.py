@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-DMMブックス データ取得スクリプト（完全版）
-DMM.com（一般）とFANZA（アダルト）の両方から取得
+DMMブックス データ取得スクリプト（修正版）
+各ジャンルを個別に取得して重複を防止
 """
 
 import requests
@@ -11,7 +11,7 @@ from datetime import datetime
 import time
 import os
 
-# API設定（環境変数から取得）
+# API設定
 API_ID = os.environ.get('FANZA_API_ID', 'a2BXCsL2MVUtUeuFBZ1h')
 AFFILIATE_ID = os.environ.get('FANZA_AFFILIATE_ID', 'yoru365-990')
 BASE_URL = 'https://api.dmm.com/affiliate/v3/ItemList'
@@ -19,8 +19,8 @@ BASE_URL = 'https://api.dmm.com/affiliate/v3/ItemList'
 # 出力ファイル
 OUTPUT_FILE = 'data/books_data.json'
 
-def fetch_books(site, floor_code, hits=10):
-    """サイトとフロア指定でブックスを取得"""
+def fetch_books_by_genre(site, floor_code, genre_id=None, hits=10):
+    """ジャンル指定でブックスを取得"""
     params = {
         'api_id': API_ID,
         'affiliate_id': AFFILIATE_ID,
@@ -32,8 +32,13 @@ def fetch_books(site, floor_code, hits=10):
         'output': 'json'
     }
     
+    # ジャンル指定がある場合
+    if genre_id:
+        params['article'] = 'genre'
+        params['article_id'] = genre_id
+    
     try:
-        print(f"🔄 Fetching {site} / {floor_code}...")
+        print(f"🔄 Fetching {site} / {floor_code} / genre:{genre_id or 'all'}...")
         response = requests.get(BASE_URL, params=params, timeout=30)
         response.raise_for_status()
         
@@ -68,33 +73,68 @@ def main():
     
     # 一般向けカテゴリ（DMM.com）
     print("\n📚 === 一般向けカテゴリ (DMM.com) ===")
-    general_comic = fetch_books('DMM.com', 'comic', hits=10)
+    
+    # 少女・女性マンガ（ジャンルID: 66033, 66034）
+    print("\n📖 少女・女性マンガ")
+    girls_comics = fetch_books_by_genre('DMM.com', 'comic', genre_id=66033, hits=10)
     time.sleep(1)
-    general_novel = fetch_books('DMM.com', 'novel', hits=10)
+    
+    # TL（ジャンルID: 66060）
+    print("\n💕 TL")
+    tl_comics = fetch_books_by_genre('DMM.com', 'comic', genre_id=66060, hits=10)
+    time.sleep(1)
+    
+    # BL（ジャンルID: 66036）
+    print("\n💙 BL")
+    bl_comics = fetch_books_by_genre('DMM.com', 'comic', genre_id=66036, hits=10)
+    time.sleep(1)
+    
+    # 文芸・ラノベ（ジャンルID: 66041）
+    print("\n📚 文芸・ラノベ")
+    novels = fetch_books_by_genre('DMM.com', 'novel', genre_id=66041, hits=10)
     time.sleep(1)
     
     all_data['general_categories'] = {
-        'girls_comics': {'name': '少女・女性マンガ', 'items': general_comic},
-        'tl': {'name': 'TL（ティーンズラブ）', 'items': general_comic},
-        'bl': {'name': 'BL（ボーイズラブ）', 'items': general_comic},
-        'novels': {'name': '文芸・ラノベ', 'items': general_novel}
+        'girls_comics': {'name': '少女・女性マンガ', 'items': girls_comics},
+        'tl': {'name': 'TL（ティーンズラブ）', 'items': tl_comics},
+        'bl': {'name': 'BL（ボーイズラブ）', 'items': bl_comics},
+        'novels': {'name': '文芸・ラノベ', 'items': novels}
     }
     
     # 成人向けカテゴリ（FANZA）
     print("\n🔞 === 成人向けカテゴリ (FANZA) ===")
-    adult_comic = fetch_books('FANZA', 'comic', hits=10)
+    
+    # アダルトマンガ
+    print("\n📕 アダルトマンガ")
+    adult_comic = fetch_books_by_genre('FANZA', 'comic', hits=10)
     time.sleep(1)
-    adult_novel = fetch_books('FANZA', 'novel', hits=10)
+    
+    # 官能小説
+    print("\n📘 官能小説")
+    adult_novel = fetch_books_by_genre('FANZA', 'novel', hits=10)
     time.sleep(1)
-    adult_photo = fetch_books('FANZA', 'photo', hits=10)
+    
+    # 写真集
+    print("\n📷 写真集")
+    adult_photo = fetch_books_by_genre('FANZA', 'photo', hits=10)
+    time.sleep(1)
+    
+    # 成人向けBL
+    print("\n💙 成人向けBL")
+    adult_bl = fetch_books_by_genre('FANZA', 'comic', genre_id=66042, hits=10)
+    time.sleep(1)
+    
+    # 成人向けTL
+    print("\n💕 成人向けTL")
+    adult_tl = fetch_books_by_genre('FANZA', 'comic', genre_id=66064, hits=10)
     time.sleep(1)
     
     all_data['adult_categories'] = {
         'adult_manga': {'name': 'アダルトマンガ', 'items': adult_comic},
         'adult_novel': {'name': '美少女ノベル・官能小説', 'items': adult_novel},
         'adult_photo': {'name': 'アダルト写真集・雑誌', 'items': adult_photo},
-        'adult_bl': {'name': '成人向けBL', 'items': adult_comic},
-        'adult_tl': {'name': '成人向けTL', 'items': adult_comic}
+        'adult_bl': {'name': '成人向けBL', 'items': adult_bl},
+        'adult_tl': {'name': '成人向けTL', 'items': adult_tl}
     }
     
     # JSONファイルに保存
@@ -105,11 +145,15 @@ def main():
     
     print(f"\n✅ Data saved to {OUTPUT_FILE}")
     print(f"\n📊 Summary:")
-    print(f"  一般 Comic: {len(general_comic)} items")
-    print(f"  一般 Novel: {len(general_novel)} items")
-    print(f"  成人 Comic: {len(adult_comic)} items")
-    print(f"  成人 Novel: {len(adult_novel)} items")
-    print(f"  成人 Photo: {len(adult_photo)} items")
+    print(f"  少女・女性マンガ: {len(girls_comics)} items")
+    print(f"  TL: {len(tl_comics)} items")
+    print(f"  BL: {len(bl_comics)} items")
+    print(f"  文芸・ラノベ: {len(novels)} items")
+    print(f"  アダルトマンガ: {len(adult_comic)} items")
+    print(f"  官能小説: {len(adult_novel)} items")
+    print(f"  写真集: {len(adult_photo)} items")
+    print(f"  成人向けBL: {len(adult_bl)} items")
+    print(f"  成人向けTL: {len(adult_tl)} items")
     print(f"\n🎉 Completed at {datetime.now()}")
 
 if __name__ == "__main__":
