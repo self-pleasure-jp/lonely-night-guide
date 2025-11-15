@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>孤独な夜のガイド - 心がほどける恋愛・癒し系コンテンツ</title>
-    <meta name="description" content="満たされない夜に。恋愛ドラマ、癒し系アニメ、心温まる漫画で、孤独な夜を優しく満たします。毎日更新。">
+    <meta name="description" content="満たされない夜に。恋愛マンガ、BL、TL、癒し系小説で孤独な夜を優しく満たします。">
     <style>
         * {
             margin: 0;
@@ -13,218 +13,210 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            background: linear-gradient(180deg, #0a0e27 0%, #1a1438 50%, #2d1b3d 100%);
-            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+            background: #000;
+            color: #fff;
             line-height: 1.6;
-            min-height: 100vh;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0;
         }
 
         header {
-            background: transparent;
-            padding: 40px 20px;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 30px;
+            background: #1a1a1a;
+            padding: 20px;
             text-align: center;
-            border: none;
+            border-bottom: 3px solid #333;
         }
 
         h1 {
-            background: linear-gradient(135deg, #e8e8f0 0%, #b8a9d4 50%, #9fa8da 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 3em;
-            margin-bottom: 15px;
-            text-shadow: 0 0 40px rgba(232, 232, 240, 0.4);
-            letter-spacing: 3px;
-        }
-
-        .subtitle {
-            color: #b8a9d4;
-            font-size: 1.3em;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .nav-btn {
-            background: rgba(184, 169, 212, 0.15);
-            color: #e8e8f0;
-            padding: 12px 30px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: none;
-            border: none;
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(184, 169, 212, 0.3);
-            box-shadow: 0 8px 20px rgba(184, 169, 212, 0.4);
-        }
-
-        .hero {
-            background: transparent;
-            padding: 60px 40px;
-            border-radius: 0;
-            box-shadow: none;
-            margin-bottom: 50px;
-            text-align: center;
-            border: none;
-        }
-
-        .hero h2 {
-            color: #e8e8f0;
-            font-size: 2.5em;
-            margin-bottom: 25px;
-            text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);
-        }
-
-        .dmm-tv-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #b8a9d4 0%, #9fa8da 100%);
-            color: white;
-            padding: 20px 50px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 1.3em;
-            font-weight: bold;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(184, 169, 212, 0.5);
-            border: none;
-        }
-
-        .dmm-tv-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(184, 169, 212, 0.7);
-        }
-
-        .categories {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .category-card {
-            background: rgba(26, 20, 56, 0.5);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: none;
-            text-align: center;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .category-card:hover {
-            transform: translateY(-10px);
-            background: rgba(45, 27, 61, 0.7);
-            box-shadow: 0 15px 40px rgba(184, 169, 212, 0.3);
-        }
-
-        .category-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            display: none;
-        }
-
-        .category-card h3 {
-            color: #e8e8f0;
-            font-size: 1.5em;
+            font-size: 2em;
+            color: #fff;
             margin-bottom: 10px;
         }
 
-        .category-card p {
-            color: #b8a9d4;
+        .subtitle {
+            color: #999;
+            font-size: 0.9em;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, #1a1a1a 0%, #000 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e60012;
+            color: #fff;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #cc0010;
+        }
+
+        .genre-links {
+            background: #1a1a1a;
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        .genre-links h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            color: #fff;
+        }
+
+        .genre-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .genre-item {
+            background: #2a2a2a;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .genre-item:hover {
+            background: #3a3a3a;
+        }
+
+        .category-section {
+            background: #0a0a0a;
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        .category-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            color: #fff;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #333;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: #1a1a1a;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-card .title {
+            padding: 10px;
+            font-size: 0.9em;
+            color: #ccc;
+            height: 3.6em;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .banner {
+            background: linear-gradient(135deg, #e60012 0%, #cc0010 100%);
+            padding: 40px 20px;
+            margin: 40px 0;
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner h2 {
+            font-size: 2em;
             margin-bottom: 20px;
         }
 
-        .category-link {
+        .banner p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .banner-button {
             display: inline-block;
-            background: linear-gradient(135deg, #b8a9d4 0%, #9fa8da 100%);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(184, 169, 212, 0.4);
-            border: none;
-        }
-
-        .category-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(184, 169, 212, 0.6);
-        }
-
-        .adult-section {
-            background: rgba(45, 27, 61, 0.3);
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 50px 0;
-            border: none;
-        }
-
-        .adult-section h3 {
-            color: #e8e8f0;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .adult-link {
-            display: inline-block;
-            background: rgba(184, 169, 212, 0.3);
-            color: #e8e8f0;
+            background: #fff;
+            color: #e60012;
             padding: 15px 40px;
-            border-radius: 20px;
             text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-        }
-
-        .adult-link:hover {
-            background: rgba(184, 169, 212, 0.5);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(184, 169, 212, 0.5);
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1em;
         }
 
         footer {
-            background: transparent;
-            padding: 40px 30px;
-            border-radius: 0;
+            background: #1a1a1a;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 50px;
-            color: #8070a0;
-            border: none;
+            color: #666;
+            margin-top: 40px;
         }
 
         @media (max-width: 768px) {
             h1 {
+                font-size: 1.5em;
+            }
+
+            .hero h2 {
                 font-size: 1.8em;
             }
 
-            .subtitle {
-                font-size: 1em;
-            }
-
-            .categories {
-                grid-template-columns: 1fr;
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 10px;
             }
         }
     </style>
@@ -236,275 +228,184 @@
             <p class="subtitle">心がほどける恋愛・癒し系コンテンツ</p>
         </header>
 
-        <div class="nav">
-            <a href="#romance-section" class="nav-btn">少女・女性マンガ</a>
-            <a href="#tl-section" class="nav-btn">TL</a>
-            <a href="#bl-section" class="nav-btn">BL</a>
-            <a href="#novel-section" class="nav-btn">文芸・ラノベ</a>
-        </div>
-
         <div class="hero">
-            <img src="images/2-1.png" alt="孤独な夜のガイド" style="width: 100%; max-width: 1200px; height: 400px; object-fit: cover; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <h2>満たされない夜に</h2>
-            <p style="font-size: 1.2em; color: #c0b0d0; margin-bottom: 20px;">
+            <p>
                 パートナーがいても、いなくても<br>
                 心が満たされない夜は誰にでもある<br>
                 <br>
-                恋愛漫画、癒し系小説、心温まる物語で<br>
+                恋愛マンガ、BL、TL、癒し系小説で<br>
                 今夜を少しだけ優しく満たしませんか
             </p>
-            <a href="#categories" 
-               class="dmm-tv-btn"
-               style="cursor: pointer;">
-                今夜のコンテンツを探す
-            </a>
+            <a href="#categories" class="cta-button">今夜のコンテンツを探す</a>
         </div>
 
-        <!-- カテゴリリンク一覧（テキスト） -->
-        <div style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 30px 0; box-shadow: none;">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">ジャンルから探す</h2>
-            
-            <!-- 恋愛・大人向け漫画 -->
-            <div style="margin-bottom: 40px;">
-                <h3 style="color: #e8e8f0; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(184, 169, 212, 0.3);">恋愛・大人向け漫画</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">恋愛 (12,169)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ラブコメ (1,571)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンス (600)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">お色気 (367)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">セクシー (193)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">不倫・婚外恋愛 (144)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">オフィスラブ (42)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ガールズラブ (42)</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンスコミック</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">大人向け漫画</a>
-                </div>
-            </div>
-
-            <!-- BL・TL -->
-            <div style="margin-bottom: 40px;">
-                <h3 style="color: #87ceeb; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(135, 206, 235, 0.3);">BL・TL</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(135, 206, 235, 0.15); border-radius: 20px; transition: all 0.3s;">BL（ボーイズラブ）</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(184, 169, 212, 0.15); border-radius: 20px; transition: all 0.3s;">TL（ティーンズラブ）</a>
-                </div>
-            </div>
-
-            <!-- 小説 -->
-            <div style="margin-bottom: 40px;">
-                <h3 style="color: #ffb347; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(255, 179, 71, 0.3);">恋愛・官能小説</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">ロマンス小説</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">官能小説</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(255, 179, 71, 0.15); border-radius: 20px; transition: all 0.3s;">文芸・ラノベ</a>
-                </div>
-            </div>
-
-            <!-- 基本無料ゲーム -->
-            <div>
-                <h3 style="color: #98fb98; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid rgba(152, 251, 152, 0.3);">基本無料ゲーム</h3>
-                <div style="display: flex; flex-wrap: wrap; gap: 15px;">
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(152, 251, 152, 0.15); border-radius: 20px; transition: all 0.3s;">PCゲーム一覧</a>
-                    <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fgames.dmm.com%2Flist%2Fpc%2Ftag&af_id=yoru365-990&ch=link_tool&ch_id=link" target="_blank" rel="noopener noreferrer" style="color: #e8e8f0; text-decoration: none; padding: 10px 20px; background: rgba(152, 251, 152, 0.15); border-radius: 20px; transition: all 0.3s;">基本無料で遊ぶ</a>
-                </div>
+        <!-- ジャンル一覧 -->
+        <div class="genre-links">
+            <h2>ジャンルから探す</h2>
+            <div class="genre-grid">
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">少女・女性マンガ</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">TL</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">BL</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">文芸・ラノベ</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">恋愛小説</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">ロマンス</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">アダルトマンガ</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">官能小説</a>
+                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" class="genre-item" target="_blank" rel="noopener noreferrer">写真集</a>
             </div>
         </div>
 
         <!-- 少女・女性マンガ -->
-        <div id="romance-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
-            <img src="image/2-2.png" alt="恋愛漫画" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">少女・女性マンガ 人気TOP5</h2>
-            <div id="romance-ranking" style="text-align: center; color: #c0b0d0;">
-                <p>読み込み中...</p>
+        <div id="girls-comics" class="category-section">
+            <h2>少女・女性マンガ TOP10</h2>
+            <div id="girls-comics-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
             </div>
         </div>
 
-        <!-- TL（ティーンズラブ） -->
-        <div id="tl-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
-            <img src="image/2-3.png" alt="TL" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">TL（ティーンズラブ） 人気TOP5</h2>
-            <div id="tl-ranking" style="text-align: center; color: #c0b0d0;">
-                <p>読み込み中...</p>
+        <!-- TL -->
+        <div id="tl" class="category-section">
+            <h2>TL（ティーンズラブ） TOP10</h2>
+            <div id="tl-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
             </div>
         </div>
 
-        <!-- BL（ボーイズラブ） -->
-        <div id="bl-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
-            <img src="image/2-4.png" alt="BL" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">BL（ボーイズラブ） 人気TOP5</h2>
-            <div id="bl-ranking" style="text-align: center; color: #c0b0d0;">
-                <p>読み込み中...</p>
+        <!-- BL -->
+        <div id="bl" class="category-section">
+            <h2>BL（ボーイズラブ） TOP10</h2>
+            <div id="bl-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
             </div>
         </div>
 
         <!-- 文芸・ラノベ -->
-        <div id="novel-section" style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
-            <img src="image/2-5.png" alt="文芸・ラノベ" style="width: 100%; max-width: 1200px; height: 300px; object-fit: cover; border-radius: 20px; margin: 0 auto 30px; display: block; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 30px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">文芸・ラノベ 人気TOP5</h2>
-            <div id="novel-ranking" style="text-align: center; color: #c0b0d0;">
-                <p>読み込み中...</p>
+        <div id="novels" class="category-section">
+            <h2>文芸・ラノベ TOP10</h2>
+            <div id="novels-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+
+        <!-- アダルトマンガ -->
+        <div id="adult-manga" class="category-section">
+            <h2>アダルトマンガ TOP10</h2>
+            <div id="adult-manga-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+
+        <!-- 官能小説 -->
+        <div id="adult-novel" class="category-section">
+            <h2>美少女ノベル・官能小説 TOP10</h2>
+            <div id="adult-novel-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+
+        <!-- 写真集 -->
+        <div id="adult-photo" class="category-section">
+            <h2>アダルト写真集・雑誌 TOP10</h2>
+            <div id="adult-photo-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+
+        <!-- 成人向けBL -->
+        <div id="adult-bl" class="category-section">
+            <h2>成人向けBL TOP10</h2>
+            <div id="adult-bl-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
+            </div>
+        </div>
+
+        <!-- 成人向けTL -->
+        <div id="adult-tl" class="category-section">
+            <h2>成人向けTL TOP10</h2>
+            <div id="adult-tl-grid" class="products-grid">
+                <div class="loading">読み込み中...</div>
             </div>
         </div>
 
         <!-- DMM TVバナー -->
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 50px; border-radius: 15px; margin: 50px 0; text-align: center;">
-            <h2 style="color: white; font-size: 2em; margin-bottom: 20px;">📺 動画も見放題で楽しみたい方へ</h2>
-            <p style="color: white; font-size: 1.2em; margin-bottom: 30px;">
-                190,000本以上のアニメ・映画・ドラマが見放題<br>
-                DMM TVプレミアムで心も身体も満たす時間を
+        <div class="banner">
+            <h2>動画も見放題で楽しみたい方へ</h2>
+            <p>
+                19万本以上のアニメ・映画・ドラマが見放題<br>
+                DMM TVプレミアムで心も満たす時間を
             </p>
             <a href="https://al.dmm.com/?lurl=https%3A%2F%2Ftv.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
                target="_blank" 
                rel="noopener noreferrer"
-               style="display: inline-block; background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%); color: #1a1438; padding: 20px 50px; border-radius: 20px; text-decoration: none; font-size: 1.3em; font-weight: bold; transition: all 0.3s; box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);">
+               class="banner-button">
                 30日間無料体験
-            </a>
-        </div>
-
-        <!-- 全ジャンル一覧 -->
-        <div style="background: transparent; padding: 40px 20px; border-radius: 0; margin: 50px 0;">
-            <h2 style="color: #e8e8f0; text-align: center; margin-bottom: 40px; font-size: 2em; text-shadow: 0 0 20px rgba(232, 232, 240, 0.5);">すべてのジャンルから探す</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 800px; margin: 0 auto;">
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
-                    <div style="font-weight: bold;">少年・青年マンガ</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">💕</div>
-                    <div style="font-weight: bold;">少女・女性マンガ</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">💙</div>
-                    <div style="font-weight: bold;">BL</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">💖</div>
-                    <div style="font-weight: bold;">TL</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;">📖</div>
-                    <div style="font-weight: bold;">文芸・ラノベ</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
-                    <div style="font-weight: bold;">ビジネス・実用</div>
-                </a>
-                <a href="https://al.dmm.com/?lurl=https%3A%2F%2Fbook.dmm.com%2F&af_id=yoru365-990&ch=link_tool&ch_id=link" 
-                   target="_blank" rel="noopener noreferrer"
-                   style="padding: 20px; background: rgba(26, 20, 56, 0.5); border-radius: 10px; text-decoration: none; color: #e8e8f0; text-align: center; transition: all 0.3s; border: none;">
-                    <div style="font-size: 1.2em; margin-bottom: 5px;"></div>
-                    <div style="font-weight: bold;">写真集</div>
-                </a>
-            </div>
-        </div>
-
-        <div class="adult-section">
-            <h3>もっと満たされたい方へ</h3>
-            <p style="color: #666; margin-bottom: 15px;">
-                心だけでなく、身体も満たしたい夜に<br>
-                パートナーがいても、いなくても、満足できなかった部分を
-            </p>
-            <a href="https://self-pleasure-jp.github.io/guide/" 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="adult-link">
-                18歳以上の方はこちら
             </a>
         </div>
 
         <footer>
             <p>© 2025 孤独な夜のガイド</p>
-            <p style="font-size: 0.9em; margin-top: 10px;">
+            <p style="margin-top: 10px; font-size: 0.9em;">
                 あなたの夜に、少しの癒しと満たしを
             </p>
         </footer>
     </div>
 
     <script>
-        const API_ID = 'a2BXCsL2MVUtUeuFBZ1h';
-        const AFFILIATE_ID = 'yoru365-990';
-
-        // 作品情報を取得して表示
-        async function loadRankings() {
-            // 4つのジャンルランキングを読み込み
-            await loadCategory('romance-ranking', null, '少女・女性マンガ');
-            await loadCategory('tl-ranking', null, 'TL');
-            await loadCategory('bl-ranking', null, 'BL');
-            await loadCategory('novel-ranking', null, '文芸・ラノベ');
-        }
-
-        async function loadCategory(containerId, genreId, categoryName) {
-            const proxyUrl = 'https://api.allorigins.win/raw?url=';
-            // DMMブックス（電子書籍）から取得
-            const apiUrl = `https://api.dmm.com/affiliate/v3/ItemList?api_id=${API_ID}&affiliate_id=${AFFILIATE_ID}&site=DMM.com&service=book&floor=book&hits=20&sort=rank&output=json`;
-            
+        // JSONデータを読み込んで表示
+        async function loadData() {
             try {
-                const response = await fetch(proxyUrl + encodeURIComponent(apiUrl), { timeout: 15000 });
+                const response = await fetch('data/books_data.json');
                 const data = await response.json();
                 
-                if (data.result && data.result.items && data.result.items.length > 0) {
-                    const items = data.result.items.filter(item => 
-                        item.imageURL && item.imageURL.large && 
-                        !item.imageURL.large.includes('noimage') &&
-                        !item.imageURL.large.includes('nowprinting')
-                    );
-                    
-                    if (items.length > 0) {
-                        displayProducts(containerId, items.slice(0, 5));
-                    } else {
-                        showError(containerId, categoryName);
-                    }
-                } else {
-                    showError(containerId, categoryName);
-                }
+                console.log('✅ Data loaded:', data);
+                
+                // 一般向けカテゴリ
+                displayCategory(data.general_categories.girls_comics, 'girls-comics-grid');
+                displayCategory(data.general_categories.tl, 'tl-grid');
+                displayCategory(data.general_categories.bl, 'bl-grid');
+                displayCategory(data.general_categories.novels, 'novels-grid');
+                
+                // 成人向けカテゴリ
+                displayCategory(data.adult_categories.adult_manga, 'adult-manga-grid');
+                displayCategory(data.adult_categories.adult_novel, 'adult-novel-grid');
+                displayCategory(data.adult_categories.adult_photo, 'adult-photo-grid');
+                displayCategory(data.adult_categories.adult_bl, 'adult-bl-grid');
+                displayCategory(data.adult_categories.adult_tl, 'adult-tl-grid');
+                
             } catch (error) {
-                console.error(`Error loading ${categoryName}:`, error);
-                showError(containerId, categoryName);
+                console.error('❌ Error loading data:', error);
             }
         }
 
-        function displayProducts(containerId, products) {
-            const html = products.map(product => `
-                <div style="display: inline-block; width: 180px; margin: 10px; text-align: left; vertical-align: top;">
-                    <a href="${product.affiliateURL}" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: #333;">
-                        <img src="${product.imageURL.large}" 
-                             alt="${product.title}" 
-                             style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s;"
-                             onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';"
-                             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';">
-                        <p style="margin-top: 10px; font-size: 0.9em; line-height: 1.4; height: 3.6em; overflow: hidden;">
-                            ${product.title.substring(0, 40)}${product.title.length > 40 ? '...' : ''}
-                        </p>
-                    </a>
-                </div>
-            `).join('');
+        function displayCategory(categoryData, gridId) {
+            const grid = document.getElementById(gridId);
             
-            document.getElementById(containerId).innerHTML = html;
-        }
-
-        function showError(containerId, categoryName) {
-            document.getElementById(containerId).innerHTML = 
-                `<p style="margin-bottom: 20px;">${categoryName}の最新作はこちらからチェック！</p>` +
-                '<a href="https://al.dmm.com/?lurl=https%3A%2F%2Fwww.dmm.com%2Fdigital%2Fvideoa%2F-%2Flist%2F%3D%2Fsort%3Ddate%2F&af_id=' + AFFILIATE_ID + '&ch=link_tool&ch_id=link" ' +
-                'target="_blank" rel="noopener noreferrer" ' +
-                'style="display: inline-block; background: #b8a9d4; color: white; padding: 15px 40px; border-radius: 20px; text-decoration: none; transition: all 0.3s;">' +
-                '作品を探す</a>';
+            if (!categoryData || !categoryData.items || categoryData.items.length === 0) {
+                grid.innerHTML = '<div class="loading">データがありません</div>';
+                return;
+            }
+            
+            const html = categoryData.items.map(item => {
+                const imageUrl = item.imageURL?.large || item.imageURL?.small || '';
+                const title = item.title || 'タイトル不明';
+                const url = item.affiliateURL || item.URL || '#';
+                
+                return `
+                    <div class="product-card">
+                        <a href="${url}" target="_blank" rel="noopener noreferrer">
+                            <img src="${imageUrl}" alt="${title}" loading="lazy">
+                            <div class="title">${title}</div>
+                        </a>
+                    </div>
+                `;
+            }).join('');
+            
+            grid.innerHTML = html;
         }
 
         // ページ読み込み時に実行
-        window.addEventListener('DOMContentLoaded', loadRankings);
+        window.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
 </html>
