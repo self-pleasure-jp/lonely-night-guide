@@ -1,1 +1,40 @@
+name: Fetch Books Data
 
+on:
+  schedule:
+    # 毎朝7:00 JST (UTC 22:00前日) にデータ取得
+    - cron: '0 22 * * *'
+  
+  workflow_dispatch:  # 手動実行可能
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests
+    
+    - name: Fetch books data
+      env:
+        FANZA_API_ID: ${{ secrets.FANZA_API_ID }}
+        FANZA_AFFILIATE_ID: ${{ secrets.FANZA_AFFILIATE_ID }}
+      run: |
+        python scripts/fetch_books_data.py
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add data/books_data.json
+        git diff --quiet && git diff --staged --quiet || git commit -m "Update books data"
+        git push
