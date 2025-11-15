@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-DMMブックス データ取得スクリプト（シンプル版）
-全カテゴリFANZAサイトから取得
+DMMブックス データ取得スクリプト（完全版）
+DMM.com（一般）とFANZA（アダルト）の両方から取得
 """
 
 import requests
@@ -19,20 +19,21 @@ BASE_URL = 'https://api.dmm.com/affiliate/v3/ItemList'
 # 出力ファイル
 OUTPUT_FILE = 'data/books_data.json'
 
-def fetch_books_simple(hits=10):
-    """シンプルにFANZAブックスランキングを取得"""
+def fetch_books(site, floor_code, hits=10):
+    """サイトとフロア指定でブックスを取得"""
     params = {
         'api_id': API_ID,
         'affiliate_id': AFFILIATE_ID,
-        'site': 'FANZA',
-        'service': 'book',
+        'site': site,
+        'service': 'ebook',
+        'floor': floor_code,
         'hits': hits,
         'sort': 'rank',
         'output': 'json'
     }
     
     try:
-        print(f"🔄 Fetching FANZA books ranking...")
+        print(f"🔄 Fetching {site} / {floor_code}...")
         response = requests.get(BASE_URL, params=params, timeout=30)
         response.raise_for_status()
         
@@ -40,7 +41,6 @@ def fetch_books_simple(hits=10):
         
         if 'result' in data and 'items' in data['result']:
             items = data['result']['items']
-            # noimage を除外
             filtered_items = [
                 item for item in items 
                 if item.get('imageURL', {}).get('large') and
@@ -60,24 +60,41 @@ def fetch_books_simple(hits=10):
 def main():
     print(f"🚀 Starting DMM Books data fetch at {datetime.now()}")
     
-    # シンプルに全カテゴリ同じデータを使用（TOP10）
-    books = fetch_books_simple(hits=10)
-    
     all_data = {
         'updated_at': datetime.now().isoformat(),
-        'general_categories': {
-            'girls_comics': {'name': '少女・女性マンガ', 'items': books},
-            'tl': {'name': 'TL（ティーンズラブ）', 'items': books},
-            'bl': {'name': 'BL（ボーイズラブ）', 'items': books},
-            'novels': {'name': '文芸・ラノベ', 'items': books}
-        },
-        'adult_categories': {
-            'adult_manga': {'name': 'アダルトマンガ', 'items': books},
-            'adult_novel': {'name': '美少女ノベル・官能小説', 'items': books},
-            'adult_photo': {'name': 'アダルト写真集・雑誌', 'items': books},
-            'adult_bl': {'name': '成人向けBL', 'items': books},
-            'adult_tl': {'name': '成人向けTL', 'items': books}
-        }
+        'general_categories': {},
+        'adult_categories': {}
+    }
+    
+    # 一般向けカテゴリ（DMM.com）
+    print("\n📚 === 一般向けカテゴリ (DMM.com) ===")
+    general_comic = fetch_books('DMM.com', 'comic', hits=10)
+    time.sleep(1)
+    general_novel = fetch_books('DMM.com', 'novel', hits=10)
+    time.sleep(1)
+    
+    all_data['general_categories'] = {
+        'girls_comics': {'name': '少女・女性マンガ', 'items': general_comic},
+        'tl': {'name': 'TL（ティーンズラブ）', 'items': general_comic},
+        'bl': {'name': 'BL（ボーイズラブ）', 'items': general_comic},
+        'novels': {'name': '文芸・ラノベ', 'items': general_novel}
+    }
+    
+    # 成人向けカテゴリ（FANZA）
+    print("\n🔞 === 成人向けカテゴリ (FANZA) ===")
+    adult_comic = fetch_books('FANZA', 'comic', hits=10)
+    time.sleep(1)
+    adult_novel = fetch_books('FANZA', 'novel', hits=10)
+    time.sleep(1)
+    adult_photo = fetch_books('FANZA', 'photo', hits=10)
+    time.sleep(1)
+    
+    all_data['adult_categories'] = {
+        'adult_manga': {'name': 'アダルトマンガ', 'items': adult_comic},
+        'adult_novel': {'name': '美少女ノベル・官能小説', 'items': adult_novel},
+        'adult_photo': {'name': 'アダルト写真集・雑誌', 'items': adult_photo},
+        'adult_bl': {'name': '成人向けBL', 'items': adult_comic},
+        'adult_tl': {'name': '成人向けTL', 'items': adult_comic}
     }
     
     # JSONファイルに保存
@@ -87,7 +104,12 @@ def main():
         json.dump(all_data, f, ensure_ascii=False, indent=2)
     
     print(f"\n✅ Data saved to {OUTPUT_FILE}")
-    print(f"📊 Total items: {len(books)}")
+    print(f"\n📊 Summary:")
+    print(f"  一般 Comic: {len(general_comic)} items")
+    print(f"  一般 Novel: {len(general_novel)} items")
+    print(f"  成人 Comic: {len(adult_comic)} items")
+    print(f"  成人 Novel: {len(adult_novel)} items")
+    print(f"  成人 Photo: {len(adult_photo)} items")
     print(f"\n🎉 Completed at {datetime.now()}")
 
 if __name__ == "__main__":
