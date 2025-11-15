@@ -11,10 +11,11 @@ import requests
 import json
 from datetime import datetime
 import time
+import os
 
-# API設定
-API_ID = 'a2BXCsL2MVUtUeuFBZ1h'
-AFFILIATE_ID = 'yoru365-990'
+# API設定（環境変数から取得）
+API_ID = os.environ.get('FANZA_API_ID', 'a2BXCsL2MVUtUeuFBZ1h')
+AFFILIATE_ID = os.environ.get('FANZA_AFFILIATE_ID', 'yoru365-990')
 BASE_URL = 'https://api.dmm.com/affiliate/v3/ItemList'
 
 # 出力ファイル
@@ -74,17 +75,17 @@ def main():
     # 一般向けカテゴリ
     print("\n📚 === 一般向けカテゴリ ===")
     general_categories = {
-        'girls_comics': {'keyword': '少女コミック', 'name': '少女・女性マンガ'},
-        'tl': {'keyword': 'TL', 'name': 'TL（ティーンズラブ）'},
-        'bl': {'keyword': 'BL', 'name': 'BL（ボーイズラブ）'},
-        'novels': {'keyword': 'ラノベ', 'name': '文芸・ラノベ'}
+        'girls_comics': {'floor': 'comic', 'name': '少女・女性マンガ'},
+        'tl': {'floor': 'comic', 'name': 'TL（ティーンズラブ）'},
+        'bl': {'floor': 'comic', 'name': 'BL（ボーイズラブ）'},
+        'novels': {'floor': 'novel', 'name': '文芸・ラノベ'}
     }
     
     for category_id, config in general_categories.items():
         print(f"\n📖 {config['name']}")
         items = fetch_books_ranking(
             site='DMM.com',
-            keyword=config['keyword'],
+            floor=config['floor'],
             hits=10
         )
         all_data['general_categories'][category_id] = {
