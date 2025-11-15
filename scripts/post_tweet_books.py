@@ -271,8 +271,8 @@ def create_fallback_tweet():
 
 https://self-pleasure-jp.github.io/lonely-night-guide/"""
 
-def post_tweet_with_image(tweet_text, image_data):
-    """画像付きツイートを投稿"""
+def post_tweet_with_image(tweet_text, image_data, is_adult=False):
+    """画像付きツイートを投稿（成人向けの場合はセンシティブ設定）"""
     try:
         # API v1.1 for media upload
         auth = tweepy.OAuth1UserHandler(
@@ -290,8 +290,13 @@ def post_tweet_with_image(tweet_text, image_data):
             media_id = media.media_id_string
             print(f"✅ Image uploaded: {media_id}")
             
-            # センシティブ設定
-            api.create_media_metadata(media_id, alt_text="書籍カバー")
+            # センシティブ設定（成人向けの場合のみ）
+            if is_adult:
+                print("🔞 Setting media as SENSITIVE (Adult content)")
+                api.create_media_metadata(media_id, alt_text="アダルトコンテンツ")
+            else:
+                print("📚 Setting media as GENERAL (Safe content)")
+                api.create_media_metadata(media_id, alt_text="書籍カバー")
         else:
             media_id = None
         
@@ -328,7 +333,7 @@ def main():
     if not data:
         print("⚠️ No data loaded, using fallback tweet")
         tweet_text = create_fallback_tweet()
-        post_tweet_with_image(tweet_text, None)
+        post_tweet_with_image(tweet_text, None, is_adult=False)
         return
     
     # 全アイテムリスト作成
@@ -336,7 +341,7 @@ def main():
     if not all_items:
         print("⚠️ No items found, using fallback tweet")
         tweet_text = create_fallback_tweet()
-        post_tweet_with_image(tweet_text, None)
+        post_tweet_with_image(tweet_text, None, is_adult=False)
         return
     
     # カウンター取得
@@ -347,7 +352,7 @@ def main():
     if not selected:
         print("⚠️ Could not select item, using fallback tweet")
         tweet_text = create_fallback_tweet()
-        post_tweet_with_image(tweet_text, None)
+        post_tweet_with_image(tweet_text, None, is_adult=False)
         return
     
     # ツイート作成
@@ -367,14 +372,16 @@ def main():
     print("\n" + "="*50)
     print("📝 Tweet preview:")
     print("="*50)
+    print(f"Category Type: {'🔞 ADULT' if selected['is_adult'] else '📚 GENERAL'}")
     print(tweet_text)
     if image_data:
         blur_status = "Blurred" if selected['is_adult'] else "Clear"
-        print(f"\n🖼️  Image: {blur_status} image attached")
+        sensitive_status = "SENSITIVE" if selected['is_adult'] else "SAFE"
+        print(f"\n🖼️  Image: {blur_status} ({sensitive_status})")
     print("="*50 + "\n")
     
-    # 投稿
-    success = post_tweet_with_image(tweet_text, image_data)
+    # 投稿（is_adultフラグを渡す）
+    success = post_tweet_with_image(tweet_text, image_data, is_adult=selected['is_adult'])
     
     if success:
         new_counter = counter + 1
