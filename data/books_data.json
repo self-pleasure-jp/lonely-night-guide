@@ -1,0 +1,43 @@
+{
+  "updated_at": "2025-11-15T03:34:00.553213",
+  "general_categories": {
+    "girls_comics": {
+      "name": "少女・女性マンガ",
+      "items": []
+    },
+    "tl": {
+      "name": "TL（ティーンズラブ）",
+      "items": []
+    },
+    "bl": {
+      "name": "BL（ボーイズラブ）",
+      "items": []
+    },
+    "novels": {
+      "name": "文芸・ラノベ",
+      "items": []
+    }
+  },
+  "adult_categories": {
+    "adult_manga": {
+      "name": "アダルトマンガ",
+      "items": []
+    },
+    "adult_novel": {
+      "name": "美少女ノベル・官能小説",
+      "items": []
+    },
+    "adult_photo": {
+      "name": "アダルト写真集・雑誌",
+      "items": []
+    },
+    "adult_bl": {
+      "name": "成人向けBL",
+      "items": []
+    },
+    "adult_tl": {
+      "name": "成人向けTL",
+      "items": []
+    }
+  }
+}
